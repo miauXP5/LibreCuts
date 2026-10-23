@@ -1,3 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="str_loop">반복</string>
+    <string name="app_name">LibreCuts</string>
+    <string name="trim">자르기</string>
+    <string name="split">나누기</string>
+    <string name="export">내보내기</string>
+    <string name="delete">삭제</string>
+    <string name="loading">영상 가져오는 중…</string>
+    <string name="cancel">취소</string>
+    <string name="loading_tag">영상을 불러오는 중이니 꽉 잡으세요!</string>
+    <string name="done">완료</string>
+    <string name="str_export_settings">설정 내보내기</string>
+    <string name="str_high_quality_1080p_original">고화질 (1080p/원본)</string>
+    <string name="str_best_visual_quality_larger_fil">영상 품질 좋음, 파일 크기 큼</string>
+    <string name="str_medium_quality_default">일반 화질 (기본)</string>
+    <string name="str_balanced_quality_and_file_size">적당한 영상 품질과 파일 크기</string>
+    <string name="str_low_quality_fastest">저화질 (빠름)</string>
+    <string name="str_smallest_file_size_fastest_exp">파일 크기 작음, 내보내기 빠름</string>
+    <string name="str_export_location">영상 내보낼 위치</string>
+    <string name="str_preview">미리보기</string>
+    <string name="str_0_00_0_00">0:00 / 0:00</string>
+    <string name="str_downloads_librecuts">다운로드/LibreCuts</string>
+    <string name="str_timeline_empty">타임라인 비어있음</string>
+    <string name="str_import_video">영상 가져오기</string>
 </resources>
