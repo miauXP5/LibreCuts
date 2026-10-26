@@ -17,7 +17,7 @@ object AudioWaveformExtractor {
      * @param targetSamples The number of data points (amplitudes) to generate (e.g. 500 for a detailed wave).
      * @return A FloatArray of normalized amplitudes (0.0 to 1.0), or null if extraction failed.
      */
-    suspend fun extractWaveform(context: Context, videoPath: String, targetSamples: Int = 300): FloatArray? = withContext(Dispatchers.IO) {
+    suspend fun extractWaveform(context: Context, videoPath: String, targetSamples: Int = 2400): FloatArray? = withContext(Dispatchers.IO) {
         val pcmFile = File(context.cacheDir, "temp_waveform_${System.currentTimeMillis()}.pcm")
         
         try {

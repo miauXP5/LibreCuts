@@ -63,9 +63,9 @@ class TrackTrimView @JvmOverloads constructor(
         style = Paint.Style.FILL
     }
     private val wavePaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
-        color = Color.parseColor("#40FFFFFF") // Semi-transparent white
+        color = Color.parseColor("#BFFFFFFF") // White waveform with stronger visibility
         style = Paint.Style.STROKE
-        strokeWidth = 3f
+        strokeWidth = 2f
         strokeCap = Paint.Cap.ROUND
     }
     private val beatPaint = Paint(Paint.ANTI_ALIAS_FLAG).apply {
@@ -175,7 +175,7 @@ class TrackTrimView @JvmOverloads constructor(
             if (audioAmplitudes != null && audioAmplitudes!!.isNotEmpty()) {
                 val amps = audioAmplitudes!!
                 var x = startX + handleWidth + 4f
-                val waveSpacing = 6f // Closer spacing for real waveforms
+                val waveSpacing = 2.5f // Dense bars for a smoother, detailed waveform
                 
                 // Map the time at pixel x to an index in audioAmplitudes
                 while (x < endX - handleWidth) {
@@ -184,7 +184,9 @@ class TrackTrimView @JvmOverloads constructor(
                     val index = ((relativeTimeMs.toFloat() / videoDurationMs) * amps.size).toInt()
                     
                     val ampValue = if (index in amps.indices) amps[index] else 0.0f
-                    val amplitude = maxAmplitude * ampValue
+                    // Lift quieter details while keeping the waveform bounded.
+                    val visibleAmpValue = kotlin.math.sqrt(ampValue.coerceIn(0f, 1f))
+                    val amplitude = maxAmplitude * visibleAmpValue
                     
                     if (amplitude > 1f) {
                         canvas.drawLine(x, centerY - amplitude, x, centerY + amplitude, wavePaint)
@@ -197,7 +199,7 @@ class TrackTrimView @JvmOverloads constructor(
             } else {
                 // Fallback to procedural wave if no data
                 var x = startX + handleWidth + 4f
-                val waveSpacing = 12f
+                val waveSpacing = 2.5f
                 var timeOffset = 0f
                 while (x < endX - handleWidth) {
                     val amplitude = maxAmplitude * (0.3f + 0.7f * Math.abs(Math.sin((x + timeOffset) * 0.05).toFloat()))
